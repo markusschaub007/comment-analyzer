@@ -4,7 +4,7 @@
 
 ### Description
 
-Ecamm Live is a mac software for live streaming. During a live stream people can put messages in the chat. The messages get stored in a SubRip File. With the Comment Analyser for Ecamm Live vou can collect and analyse this chats.
+Ecamm Live is a mac software for live streaming. During a live stream people can put messages in the chat. The messages get stored in a SubRip File. With the Comment Analyser for Ecamm Live you can collect and analyse this chats.
 
 ### Deciding the scope
 
@@ -12,7 +12,7 @@ This is my final project for the Harward course: "CS50's Introduction to Program
 
 - Fullfilling the course requierements
 - Applying and practicing what I've learned
-- Challenging my self
+- Challenging myself
 - Finishing in a resonable time
 - Build something that is useful to me and potentially others
 
@@ -27,8 +27,8 @@ I decided the scope with the **Minimal Viable Product** (MVP) strategy. It is de
     - the date and time from the file name
     - the time, chatter and message from the file content
 - Writing the results in a `csv` file in the programms subfolder `/out/`.
-- Writing a wordcloud from the messages in a `png` file in tehe programms subfolder `/out/`.
-- Create a list of th top 10 chatters with the number of their chats and `print` it to the `terminal`.
+- Creating a wordcloud from the messages in a `png` file in the programms subfolder `/out/`.
+- Create a list of the top 10 chatters with the number of their chats and `print` it to the `terminal`.
 
 ### Features for future releases:
 
