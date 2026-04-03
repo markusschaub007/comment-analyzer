@@ -43,7 +43,7 @@ I decided the scope with the **Minimal Viable Product** (MVP) strategy. It is de
 
 ## Some Titel
 
-### Format of the .srt Files from Ecamm Live
+### Format of the `srt` Files from Ecamm Live
 
 #### Filename
 
