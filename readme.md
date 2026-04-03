@@ -43,12 +43,15 @@ I decided the scope with the **Minimal Viable Product** (MVP) strategy. It is de
 
 ## Some Titel
 
-### Format of the `srt` Files from Ecamm Live
-
-#### Filename
 
 
-#### Content
+### Format of the filenames of the `srt` files from Ecamm Live
+
+```
+Markus Schaub on 2025-10-23 at 21.59.51.srt
+```
+
+### Format of the conten of the `srt` files from Ecamm Live
 
 Live chat messages are stored in a SubRip file, with the `.srt` extension. The format is described in [Wikipedia](https://en.wikipedia.org/wiki/SubRip).
 
