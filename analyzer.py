@@ -4,23 +4,31 @@ import os
 import re
 import sys
 from tabulate import tabulate
-from typing import Dict, List, KeysView, Set, Tuple
+from typing import Dict, KeysView, List, Literal, Set, Tuple, TypedDict
 import wordcloud
 
 
+class ChatEntry(TypedDict):
+    Stream: str
+    Number: str
+    Time: str
+    Chatter: str
+    Message: str
+
+
 def main() -> None:
-    srt_directory: str = get_directory("srt")
+    srt_directory = get_directory("srt")
     print()
     print(f"Input directory for the .srt files: {srt_directory}")
 
-    out_directory: str = get_directory("out")
+    out_directory = get_directory("out")
     print(f"Output directory: {out_directory}")
 
-    srt_paths: List[str] = get_paths(srt_directory)
+    srt_paths = get_paths(srt_directory)
     print()
     print(f"Parsing {len(srt_paths)} files...")
 
-    chats: List[Dict] = read_files(srt_paths)
+    chats = read_files(srt_paths)
 
     if not chats:
         sys.exit("All files were skipped")
@@ -29,58 +37,54 @@ def main() -> None:
     print("Top words:")
     print()
 
-    words_ranked: List[Tuple[str, int]] = get_rank(chats, "Word", 10)
-    words_formated: List[Dict] = format_rank(words_ranked, column2="Word")
+    words_ranked = get_word_rank(chats, 10)
+    words_formated = format_rank(words_ranked, column2="Word")
     print(tabulate(words_formated, headers="keys"))
 
     print()
     print("Top chatters:")
     print()
 
-    chatters_ranked: List[Tuple[str, int]] = get_rank(chats, "Chatter", 10)
-    chatters_formated: List[Dict] = format_rank(
-        chatters_ranked, column2="Chatter", column3="Chats"
-    )
+    chatters_ranked = get_rank(chats, "Chatter", 10)
+    chatters_formated = format_rank(chatters_ranked, column2="Chatter", column3="Chats")
     print(tabulate(chatters_formated, headers="keys"))
 
     print()
     print("Top streams")
     print()
 
-    streams_ranked: List[Tuple[str, int]] = get_rank(chats, "Stream", 10)
-    streams_formated: List[Dict] = format_rank(
-        streams_ranked, column2="Stream", column3="Chats"
-    )
+    streams_ranked = get_rank(chats, "Stream", 10)
+    streams_formated = format_rank(streams_ranked, column2="Stream", column3="Chats")
     print(tabulate(streams_formated, headers="keys"))
 
-    file_name: str = "chats.csv"
+    file_name = "chats.csv"
     print()
     print(f"Writing chats to {out_directory+file_name} ...")
     write_csv(out_directory, file_name, chats)
 
-    file_name: str = "wordcloud.png"
+    file_name = "wordcloud.png"
     print(f"Writing wordcloud to {out_directory+file_name} ...")
-    words_ranked: List[Tuple[str, int]] = get_rank(chats, "Word", 2000)
+    words_ranked = get_word_rank(chats, 2000)
     write_wordcloud(out_directory, file_name, words_ranked)
 
     print("done!")
     print()
 
 
-def get_directory(type: str = "srt") -> str:
-    if type == "srt":
+def get_directory(directory_type: str = "srt") -> str:
+    if directory_type == "srt":
         # The directoy is hardcoded for now. Todo: get directory from argv or user prompt
-        directory: str = "./srt/"
-    elif type == "out":
+        directory = "./srt/"
+    elif directory_type == "out":
         # The directoy is hardcoded for now. Todo: get directory from argv or user prompt
-        directory: str = "./out/"
+        directory = "./out/"
     else:
-        raise ValueError(f"Type '{type}' is not valid")
+        raise ValueError(f"Type '{directory_type}' is not valid")
 
     if os.path.isdir(directory):
         return directory
     else:
-        sys.exit(f"Can't find {type}-directory: {directory}")
+        sys.exit(f"Can't find {directory_type}-directory: {directory}")
 
 
 def get_paths(directory: str) -> List[str]:
@@ -92,15 +96,15 @@ def get_paths(directory: str) -> List[str]:
     return paths
 
 
-def read_files(paths: List[str]) -> List[Dict]:
-    chats: List[Dict] = []
+def read_files(paths: List[str]) -> List[ChatEntry]:
+    chats: List[ChatEntry] = []
 
     for path in paths:
 
-        file_name: str = os.path.basename(path)
+        file_name = os.path.basename(path)
 
         with open(path) as file:
-            lines: List[str] = file.readlines()
+            lines = file.readlines()
 
         try:
             file_chats = parse_file(file_name, lines)
@@ -111,20 +115,43 @@ def read_files(paths: List[str]) -> List[Dict]:
     return chats
 
 
-def parse_file(file_name: str, lines: List[str]) -> List[Dict]:
-    file_chats: List[Dict] = []
-    stream: str = file_name.removesuffix(".srt")
+def parse_uploaded_files(uploaded_files: List[Tuple[str, str]]) -> Tuple[List[ChatEntry], List[str]]:
+    """
+    Parse uploaded file contents.
+    
+    Args:
+        uploaded_files: List of tuples containing (file_name, file_content)
+    
+    Returns:
+        Tuple of (chats, errors) where chats is the parsed data and errors are parsing errors
+    """
+    chats: List[ChatEntry] = []
+    errors: List[str] = []
 
-    length: int = len(lines)
+    for file_name, file_content in uploaded_files:
+        lines = file_content.splitlines(keepends=True)
+        
+        try:
+            file_chats = parse_file(file_name, lines)
+            chats.extend(file_chats)
+        except ValueError as e:
+            errors.append(str(e))
+
+    return chats, errors
+
+
+def parse_file(file_name: str, lines: List[str]) -> List[ChatEntry]:
+    file_chats: List[ChatEntry] = []
+    stream = file_name.removesuffix(".srt")
+
+    length = len(lines)
     if length % 4 != 0:
         raise ValueError(f"Can't parse file {file_name}, invalid number of lines")
 
     for i in range(0, length, 4):
-        number: str = parse_number(lines[i].rstrip())
-        time: str = parse_time(lines[i + 1].rstrip())
+        number = parse_number(lines[i].rstrip())
+        time = parse_time(lines[i + 1].rstrip())
         chatter, message = parse_message(lines[i + 2].rstrip())
-        chatter: str
-        message: str
         if number and time and chatter:
             file_chats.append(
                 {
@@ -143,7 +170,7 @@ def parse_file(file_name: str, lines: List[str]) -> List[Dict]:
             else:
                 error_line = 3
 
-            error_message: str = (
+            error_message = (
                 f"Can't parse file {file_name}, first error: line {i+error_line}"
             )
             raise ValueError(error_message)
@@ -152,43 +179,74 @@ def parse_file(file_name: str, lines: List[str]) -> List[Dict]:
 
 
 def parse_number(line: str) -> str:
-    pattern: str = r"^\d+$"
+    pattern = r"^\d+$"
     if match := re.search(pattern, line):
         return match.group(0)
+    else:
+        return ""
 
 
 def parse_time(line: str) -> str:
-    pattern_time: str = r"(\d{2}(?::[0-5][0-9]){2}),\d{3}"
-    pattern: str = r"^" + pattern_time + r" --> " + pattern_time + r"$"
+    pattern_time = r"(\d{2}(?::[0-5][0-9]){2}),\d{3}"
+    pattern = r"^" + pattern_time + r" --> " + pattern_time + r"$"
     if match := re.search(pattern, line):
         return match.group(1)
+    else:
+        return ""
 
 
-def parse_message(line: str) -> List[str]:
-    pattern: str = r"^@?(.+?): ?(.*)$"
+def parse_message(line: str) -> Tuple[str, str]:
+    pattern = r"^@?(.+?): ?(.*)$"
     if match := re.search(pattern, line):
         chatter = match.group(1)
         message = match.group(2)
-        return [chatter, message]
+        return (chatter, message)
     else:
-        return ["", ""]
+        return ("", "")
 
 
-def get_rank(chats: List[Dict], field: str, top_n: int = None) -> List[Tuple[str, int]]:
-    fields: List[str] = []
+def get_word_rank(chats: List[ChatEntry], top_n: int = None) -> List[Tuple[str, int]]:
+    stopwords: Set[str] = set(wordcloud.STOPWORDS)
+    stopwords.add("hey")
 
-    if field == "Word":
-        for chat in chats:
-            pattern: str = r"\w{3,}"
-            message_words: List[str] = re.findall(pattern, chat["Message"])
-            stopwords: Set[str] = set(wordcloud.STOPWORDS)
-            stopwords.add("hey")
-            for word in message_words:
-                if word.casefold() not in stopwords:
-                    fields.append(word)
-    else:
-        for chat in chats:
-            fields.append(chat[field])
+    word_totals: Counter = Counter()
+    word_variants: Dict[str, Counter] = {}
+
+    for chat in chats:
+        pattern = r"\w{3,}"
+        message_words = re.findall(pattern, chat["Message"])
+
+        for word in message_words:
+            normalized = word.casefold()
+
+            if normalized in stopwords:
+                continue
+
+            word_totals[normalized] += 1
+
+            if normalized not in word_variants:
+                word_variants[normalized] = Counter()
+
+            word_variants[normalized][word] += 1
+
+    words_ranked: List[Tuple[str, int]] = []
+    for normalized, total_count in word_totals.most_common(top_n):
+        variants_for_word: Counter = word_variants[normalized]
+        display_word = variants_for_word.most_common(1)[0][0]
+
+        words_ranked.append((display_word, total_count))
+
+    return words_ranked
+
+
+def get_rank(
+    chats: List[ChatEntry],
+    field: Literal["Chatter", "Stream"],
+    top_n: int = None,
+) -> List[Tuple[str, int]]:
+    fields = []
+    for chat in chats:
+        fields.append(chat[field])
 
     return Counter(fields).most_common(top_n)
 
@@ -206,8 +264,8 @@ def format_rank(
     return ranked
 
 
-def write_csv(dir: str, file_name: str, chats: List[Dict]) -> None:
-    path: str = dir + file_name
+def write_csv(directory: str, file_name: str, chats: List[ChatEntry]) -> None:
+    path = directory + file_name
     fieldnames: KeysView = chats[0].keys()
 
     with open(path, "w") as file:
@@ -218,12 +276,12 @@ def write_csv(dir: str, file_name: str, chats: List[Dict]) -> None:
             writer.writerow(chat)
 
 
-def write_wordcloud(dir: str, file_name: str, words: List[Tuple[str, int]]) -> None:
-    path: str = dir + file_name
-    word_frequency: Dict = dict(words)
-    wc: wordcloud.WordCloud = wordcloud.WordCloud(
-        width=1920, height=1080, max_words=1000
-    )
+def write_wordcloud(
+    directory: str, file_name: str, words: List[Tuple[str, int]]
+) -> None:
+    path = directory + file_name
+    word_frequency = dict(words)
+    wc = wordcloud.WordCloud(width=1920, height=1080, max_words=1000)
     wc.generate_from_frequencies(word_frequency)
     wc.to_file(path)
 
