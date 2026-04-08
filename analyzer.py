@@ -4,7 +4,7 @@ import os
 import re
 import sys
 from tabulate import tabulate
-from typing import Dict, KeysView, List, Literal, Set, Tuple, TypedDict
+from typing import Literal, TypedDict
 import wordcloud
 
 
@@ -87,8 +87,8 @@ def get_directory(directory_type: str = "srt") -> str:
         sys.exit(f"Can't find {directory_type}-directory: {directory}")
 
 
-def get_paths(directory: str) -> List[str]:
-    paths: List[str] = []
+def get_paths(directory: str) -> list[str]:
+    paths: list[str] = []
     for path in os.scandir(directory):
         if path.is_file():
             if os.path.splitext(path.name)[1] == ".srt":
@@ -96,8 +96,8 @@ def get_paths(directory: str) -> List[str]:
     return paths
 
 
-def read_files(paths: List[str]) -> List[ChatEntry]:
-    chats: List[ChatEntry] = []
+def read_files(paths: list[str]) -> list[ChatEntry]:
+    chats: list[ChatEntry] = []
 
     for path in paths:
 
@@ -115,7 +115,9 @@ def read_files(paths: List[str]) -> List[ChatEntry]:
     return chats
 
 
-def parse_uploaded_files(uploaded_files: List[Tuple[str, str]]) -> Tuple[List[ChatEntry], List[str]]:
+def parse_uploaded_files(
+    uploaded_files: list[tuple[str, str]],
+) -> tuple[list[ChatEntry], list[str]]:
     """
     Parse uploaded file contents.
     
@@ -125,8 +127,8 @@ def parse_uploaded_files(uploaded_files: List[Tuple[str, str]]) -> Tuple[List[Ch
     Returns:
         Tuple of (chats, errors) where chats is the parsed data and errors are parsing errors
     """
-    chats: List[ChatEntry] = []
-    errors: List[str] = []
+    chats: list[ChatEntry] = []
+    errors: list[str] = []
 
     for file_name, file_content in uploaded_files:
         lines = file_content.splitlines(keepends=True)
@@ -140,8 +142,8 @@ def parse_uploaded_files(uploaded_files: List[Tuple[str, str]]) -> Tuple[List[Ch
     return chats, errors
 
 
-def parse_file(file_name: str, lines: List[str]) -> List[ChatEntry]:
-    file_chats: List[ChatEntry] = []
+def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
+    file_chats: list[ChatEntry] = []
     stream = file_name.removesuffix(".srt")
 
     length = len(lines)
@@ -195,7 +197,7 @@ def parse_time(line: str) -> str:
         return ""
 
 
-def parse_message(line: str) -> Tuple[str, str]:
+def parse_message(line: str) -> tuple[str, str]:
     pattern = r"^@?(.+?): ?(.*)$"
     if match := re.search(pattern, line):
         chatter = match.group(1)
@@ -205,15 +207,17 @@ def parse_message(line: str) -> Tuple[str, str]:
         return ("", "")
 
 
-def get_word_rank(chats: List[ChatEntry], top_n: int = None) -> List[Tuple[str, int]]:
-    stopwords: Set[str] = set(wordcloud.STOPWORDS)
+def get_word_rank(
+    chats: list[ChatEntry], top_n: int | None = None
+) -> list[tuple[str, int]]:
+    stopwords = set(wordcloud.STOPWORDS)
     stopwords.add("hey")
 
-    word_totals: Counter = Counter()
-    word_variants: Dict[str, Counter] = {}
+    word_totals = Counter()
+    word_variants = {}
 
+    pattern = r"\w{3,}"
     for chat in chats:
-        pattern = r"\w{3,}"
         message_words = re.findall(pattern, chat["Message"])
 
         for word in message_words:
@@ -229,9 +233,9 @@ def get_word_rank(chats: List[ChatEntry], top_n: int = None) -> List[Tuple[str, 
 
             word_variants[normalized][word] += 1
 
-    words_ranked: List[Tuple[str, int]] = []
+    words_ranked: list[tuple[str, int]] = []
     for normalized, total_count in word_totals.most_common(top_n):
-        variants_for_word: Counter = word_variants[normalized]
+        variants_for_word = word_variants[normalized]
         display_word = variants_for_word.most_common(1)[0][0]
 
         words_ranked.append((display_word, total_count))
@@ -240,36 +244,32 @@ def get_word_rank(chats: List[ChatEntry], top_n: int = None) -> List[Tuple[str, 
 
 
 def get_rank(
-    chats: List[ChatEntry],
+    chats: list[ChatEntry],
     field: Literal["Chatter", "Stream"],
-    top_n: int = None,
-) -> List[Tuple[str, int]]:
-    fields = []
-    for chat in chats:
-        fields.append(chat[field])
-
-    return Counter(fields).most_common(top_n)
+    top_n: int | None = None,
+) -> list[tuple[str, int]]:
+    return Counter(chat[field] for chat in chats).most_common(top_n)
 
 
 def format_rank(
-    ranks: List[Tuple[str, int]],
+    ranks: list[tuple[str, int]],
     column1: str = "Rank",
     column2: str = "Value",
     column3: str = "#",
-) -> List[Dict]:
-    ranked: List[Dict] = []
+) -> list[dict[str, int | str]]:
+    ranked = []
     for index, rank in enumerate(ranks):
         ranked.append({column1: index + 1, column2: rank[0], column3: rank[1]})
 
     return ranked
 
 
-def write_csv(directory: str, file_name: str, chats: List[ChatEntry]) -> None:
+def write_csv(directory: str, file_name: str, chats: list[ChatEntry]) -> None:
     path = directory + file_name
-    fieldnames: KeysView = chats[0].keys()
+    fieldnames = chats[0].keys()
 
-    with open(path, "w") as file:
-        writer: csv.DictWriter = csv.DictWriter(file, fieldnames=fieldnames)
+    with open(path, "w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
 
         for chat in chats:
@@ -277,7 +277,7 @@ def write_csv(directory: str, file_name: str, chats: List[ChatEntry]) -> None:
 
 
 def write_wordcloud(
-    directory: str, file_name: str, words: List[Tuple[str, int]]
+    directory: str, file_name: str, words: list[tuple[str, int]]
 ) -> None:
     path = directory + file_name
     word_frequency = dict(words)
