@@ -120,10 +120,10 @@ def parse_uploaded_files(
 ) -> tuple[list[ChatEntry], list[str]]:
     """
     Parse uploaded file contents.
-    
+
     Args:
         uploaded_files: List of tuples containing (file_name, file_content)
-    
+
     Returns:
         Tuple of (chats, errors) where chats is the parsed data and errors are parsing errors
     """
@@ -132,7 +132,7 @@ def parse_uploaded_files(
 
     for file_name, file_content in uploaded_files:
         lines = file_content.splitlines(keepends=True)
-        
+
         try:
             file_chats = parse_file(file_name, lines)
             chats.extend(file_chats)
