@@ -1,12 +1,14 @@
 import re
 from typing import TypedDict
 
+
 class ChatEntry(TypedDict):
     Stream: str
     Number: str
     Time: str
     Chatter: str
     Message: str
+
 
 def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
     file_chats: list[ChatEntry] = []

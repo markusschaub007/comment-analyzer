@@ -9,9 +9,6 @@ from typing import Literal
 import wordcloud
 
 
-
-
-
 def main() -> None:
     srt_directory = get_directory("srt")
     print()
@@ -136,8 +133,6 @@ def parse_uploaded_files(
             errors.append(str(e))
 
     return chats, errors
-
-
 
 
 def get_word_rank(
