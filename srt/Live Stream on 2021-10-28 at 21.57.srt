@@ -1,0 +1,476 @@
+1
+00:00:00,000 --> 00:00:00,000
+Mommy Guide Inc: yey! first one here!
+
+2
+00:00:00,000 --> 00:00:00,000
+Markus Schaub: Hi Lala @Mommy Guide Inc
+
+3
+00:00:00,000 --> 00:00:00,000
+Mommy Guide Inc: Hi Markus! Excited much for this.stream. A takeover! he he he
+
+4
+00:00:00,000 --> 00:00:00,000
+Make and Do Crafts: Hello, front row seat for me too
+
+5
+00:00:01,000 --> 00:00:06,000
+Paul Burke: hey everyone 🙂
+
+6
+00:00:43,000 --> 00:00:48,000
+Paul Burke: Markus is so nervous about this interview he's having a hard time with the tech
+
+7
+00:00:48,000 --> 00:00:53,000
+Mommy Guide Inc: Hey @Paul Burke!
+
+8
+00:01:08,000 --> 00:01:13,000
+Paul Burke: hey @Mommy Guide Inc !
+
+9
+00:01:22,000 --> 00:01:27,000
+Caleb McDonald: Things about to get real REAL…. 💯 Sarah take over!
+
+10
+00:01:26,000 --> 00:01:31,000
+Sandi Thompson: Hey , Hey
+
+11
+00:01:37,000 --> 00:01:42,000
+austinator: hey Markus, hey Sarah, hello chat
+
+12
+00:02:10,000 --> 00:02:15,000
+Paul Burke: hey @austinator
+
+13
+00:02:20,000 --> 00:02:25,000
+Mommy Guide Inc: Hi @Sandi Thompson @austinator @Caleb McDonald!
+
+14
+00:02:44,000 --> 00:02:49,000
+Paul Burke: we'll finally get some answers to the enigma that is Markus...
+
+15
+00:03:25,000 --> 00:03:30,000
+Sammy Super Star: Hey everyone
+
+16
+00:04:02,000 --> 00:04:07,000
+Mommy Guide Inc: And @Sammy Super Star is in the house!
+
+17
+00:05:15,000 --> 00:05:20,000
+Sandi Thompson: same thing happened to me!!
+
+18
+00:05:46,000 --> 00:05:51,000
+Mommy Guide Inc: Hi Sarah! And the take over starts:)
+
+19
+00:07:50,000 --> 00:07:55,000
+Paul Burke: Q - What's your favorite movie?
+
+20
+00:08:05,000 --> 00:08:10,000
+Sandi Thompson: Q: When is the next Markus dance routine happening?
+
+21
+00:09:06,000 --> 00:09:11,000
+Tech Troublemaker: Hey @Markus Schaub
+
+22
+00:09:15,000 --> 00:09:20,000
+Tech Troublemaker: Hey @Mommy Guide Inc
+
+23
+00:10:04,000 --> 00:10:09,000
+Mommy Guide Inc: Yey Roy @Tech Troublemaker! hi!
+
+24
+00:10:25,000 --> 00:10:30,000
+Paul Burke: hahaha....tarantino isn't known for being so chill.
+
+25
+00:10:59,000 --> 00:11:04,000
+Sandi Thompson: Your dancing was the best part of LEDA!!
+
+26
+00:11:12,000 --> 00:11:17,000
+Paul Burke: Q - thought about making videos....or live is your focus? Hmmmmm&gt;&gt;&gt; Markus...do you have dreams of making videos???
+
+27
+00:15:08,000 --> 00:15:13,000
+Caleb McDonald: I want to know what MARKUS can/does do with all his 10Gbps bandwidth bliss??
+
+28
+00:16:11,000 --> 00:16:16,000
+Tech Troublemaker: it is all about the secret ingredient.
+
+29
+00:17:18,000 --> 00:17:23,000
+David W. Ryan: Hi Sarah and Markus!
+
+30
+00:17:22,000 --> 00:17:27,000
+Tech Troublemaker: the best interviewers get others to talk about themselves and just listen or so it seems.
+
+31
+00:17:50,000 --> 00:17:55,000
+Tech Troublemaker: Hey Sarah! Hey @Paul Burke
+
+32
+00:18:55,000 --> 00:19:00,000
+Paul Burke: hey Tech Troublemaker!
+
+33
+00:19:14,000 --> 00:19:19,000
+Mommy Guide Inc: Hi @David W. Ryan!
+
+34
+00:20:57,000 --> 00:21:02,000
+Caleb McDonald: For any tech people here, no idea why Sarah’s video glitches - only does it on these interviews via Ecamm browser. We’ve tried chrome and Safari and both does it. (It’s not out internet) 🤔 Any ideas?
+
+35
+00:21:05,000 --> 00:21:10,000
+Cheryl French: Hello Markus and Sarah!
+
+36
+00:21:23,000 --> 00:21:28,000
+Paul Burke: love that sarah...it's like Markus is a gateway drug for people interested in livestreaming
+
+37
+00:22:14,000 --> 00:22:19,000
+Mommy Guide Inc: Sarah is doing a fantastic job taking over today's show:)
+
+38
+00:22:34,000 --> 00:22:39,000
+Tech Troublemaker: @Caleb McDonald Good question. I wonder where their hosting is (Ecamm's). It could be that it is in the States and because of that it is sensitive to latency.
+
+39
+00:23:08,000 --> 00:23:13,000
+Tech Troublemaker: @Caleb McDonald Any idea of what CPU and memory look like when doing this?
+
+40
+00:24:04,000 --> 00:24:09,000
+Mommy Guide Inc: LOL! Thanks Sarah & Markus for always dropping by. And to everyone here. Our community is super awesome:)
+
+41
+00:24:29,000 --> 00:24:34,000
+Cheryl French: I also need crafting for dummies!🤣
+
+42
+00:24:33,000 --> 00:24:38,000
+Tech Troublemaker: @Markus Schaub , you may great thumbnails. That takes skills. Also your overlays look great.
+
+43
+00:25:04,000 --> 00:25:09,000
+Tech Troublemaker: @Mommy Guide Inc we should do a crafting with computers episode together. 🙂
+
+44
+00:25:10,000 --> 00:25:15,000
+Caleb McDonald: @Tech not yet. Haven’t had chance to deep dive into what the load is. However, it’s M1 MacBook and she’s able to conduct the interview running it from Ecamm just fine, never glitches.
+
+45
+00:26:01,000 --> 00:26:06,000
+Caleb McDonald: My OCD with things having to be perfect is causing this distraction. Sorry! I’ll stop. 🙈
+
+46
+00:26:02,000 --> 00:26:07,000
+Mommy Guide Inc: Are you using a capture card Sarah? Could it be that one? I am not a tech person but in a recent stream of a friend that was the issue. They changed it and it stopped the glitching.
+
+47
+00:26:15,000 --> 00:26:20,000
+Sandi Thompson: Don't forget to hit the like button!
+
+48
+00:26:26,000 --> 00:26:31,000
+Tech Troublemaker: @Caleb McDonald I would ask in the Ecamm community to see if others have seen this. Yeah, I want to be perfect. Glitches make me sad.
+
+49
+00:29:04,000 --> 00:29:09,000
+Mommy Guide Inc: This is Sarah's channel. See you there too! https://www.youtube.com/SmallChangesTV
+
+50
+00:29:07,000 --> 00:29:12,000
+Caleb McDonald: Which is ironic since our live stream is called “Small Talk” 😂
+
+51
+00:29:19,000 --> 00:29:24,000
+Inspirational Connection TV: Hey Markus and Sarah
+
+52
+00:29:32,000 --> 00:29:37,000
+Inspirational Connection TV: Hey mommy Lala and Roy
+
+53
+00:29:53,000 --> 00:29:58,000
+Tech Troublemaker: Hey @Inspirational Connection TV
+
+54
+00:29:55,000 --> 00:30:00,000
+Mommy Guide Inc: Yey Samantha@Inspirational Connection TV hi!
+
+55
+00:30:20,000 --> 00:30:25,000
+Cheryl French: Yes, and it’s also fun when you’re doing a live and then two other friends from the community start joking with each other on the chat.
+
+56
+00:30:47,000 --> 00:30:52,000
+Mommy Guide Inc: both my kids are under the spectrum.
+
+57
+00:32:39,000 --> 00:32:44,000
+Sandi Thompson: ADHD here ... Squirrel! Squirrel! Cat! Shiny! Squirrel!
+
+58
+00:33:21,000 --> 00:33:26,000
+Stephanie Gieseke: I got here late!!!
+
+59
+00:33:26,000 --> 00:33:31,000
+Cheryl French: Sandi 🤣
+
+60
+00:34:01,000 --> 00:34:06,000
+Tech Troublemaker: I get excited and talk over people and I feel the need to fill the quiet moments with something. I don't mean too but I seem to be wired that way.
+
+61
+00:34:55,000 --> 00:35:00,000
+Ellie Calhoun: Late! But here at least for a bit!
+
+62
+00:34:55,000 --> 00:35:00,000
+Paul Burke: I hear you! last minute creation addict here too
+
+63
+00:34:56,000 --> 00:35:01,000
+Cheryl French: I suspect that I have undiagnosed ADD, which would be what Sandi described above but in slow motion 🤣
+
+64
+00:37:18,000 --> 00:37:23,000
+Stephanie Gieseke: Yes!!! Masking!!
+
+65
+00:38:46,000 --> 00:38:51,000
+David W. Ryan: I am that duck!
+
+66
+00:39:04,000 --> 00:39:09,000
+Julie Ulrich: Hi Sarah and Markus! This is fascinating 🧐 Thanks for discussing it.
+
+67
+00:39:41,000 --> 00:39:46,000
+Cheryl French: Certainly is!
+
+68
+00:41:22,000 --> 00:41:27,000
+Mommy Guide Inc: Hi @Stephanie Gieseke @Cheryl French!
+
+69
+00:41:38,000 --> 00:41:43,000
+Mommy Guide Inc: Yey @Ellie Calhoun hi!
+
+70
+00:42:52,000 --> 00:42:57,000
+Cheryl French: Hey Lala and all you other beautiful people!
+
+71
+00:43:05,000 --> 00:43:10,000
+Siri Knows: Hey Markus!
+
+72
+00:43:24,000 --> 00:43:29,000
+Tech Troublemaker: I wash my hands when I hear people cough or sneeze.
+
+73
+00:43:26,000 --> 00:43:31,000
+Mommy Guide Inc: Indeed my kids have different learning styles but we have found what works for them individually and now they're thriving:)
+
+74
+00:43:47,000 --> 00:43:52,000
+Mommy Guide Inc: Hi @Siri Knows!:)
+
+75
+00:47:23,000 --> 00:47:28,000
+Animal Paradise - Communication & Healing: Hi Markus & Sarah so happy to see you both.
+
+76
+00:47:52,000 --> 00:47:57,000
+Mommy Guide Inc: HI Janet@Animal Paradise - Communication & Healing!
+
+77
+00:49:18,000 --> 00:49:23,000
+Siri Knows: Hi @Mommy Guide Inc!:D
+
+78
+00:50:12,000 --> 00:50:17,000
+Animal Paradise - Communication & Healing: Hi @mommy guide inc so good to be here with you Lala
+
+79
+00:51:29,000 --> 00:51:34,000
+Siri Knows: :takeout::shelterin:
+
+80
+00:52:03,000 --> 00:52:08,000
+Nika Stewart: Finally here live!
+
+81
+00:52:30,000 --> 00:52:35,000
+Siri Knows: Hello @Claleb McDonald:goodvibes:
+
+82
+00:52:35,000 --> 00:52:40,000
+Mommy Guide Inc: Indeed Janet. Enjoying the discussion right now. It hits very close to home for me:).
+
+83
+00:52:51,000 --> 00:52:56,000
+Mommy Guide Inc: Hi @Nika Stewart!
+
+84
+00:53:11,000 --> 00:53:16,000
+Caleb McDonald: Hey Siri! *every apple device goes off* 😂❤️
+
+85
+00:53:14,000 --> 00:53:19,000
+Siri Knows: @Caleb Mcdonald
+
+86
+00:53:30,000 --> 00:53:35,000
+Animal Paradise - Communication & Healing: @Mommy so important to talk about important stuff of life in a safe place.
+
+87
+00:53:33,000 --> 00:53:38,000
+Ana Zugheri: Hello friends 👋
+
+88
+00:53:35,000 --> 00:53:40,000
+Siri Knows: 🤣😂
+
+89
+00:54:05,000 --> 00:54:10,000
+Nika Stewart: sharing your personal stories is so helpful for connecting with others
+
+90
+00:54:14,000 --> 00:54:19,000
+Mommy Guide Inc: Hi @Ana Zugheri:)
+
+91
+00:54:47,000 --> 00:54:52,000
+Caleb McDonald: Sarah is rocking the live streaming even with the glitches. She’s a pro. 💯
+
+92
+00:55:25,000 --> 00:55:30,000
+Siri Knows: 🐨🧋
+
+93
+00:56:27,000 --> 00:56:32,000
+Mommy Guide Inc: absolutely 101% agree Caleb! Everyone don't care! this discussion is awesome:)
+
+94
+00:56:43,000 --> 00:56:48,000
+Ana Zugheri: So true!!! Mommy Lala had empowered me to go live on my YouTube, soon!
+
+95
+00:56:44,000 --> 00:56:49,000
+Tech Troublemaker: Live is Live.
+
+96
+00:57:26,000 --> 00:57:31,000
+Caleb McDonald: Personality first, tech secondary.
+
+97
+00:57:33,000 --> 00:57:38,000
+Tech Troublemaker: @Markus Schaub what is in your cup?
+
+98
+00:57:34,000 --> 00:57:39,000
+Sandi Thompson: Sarah did a great job!
+
+99
+00:57:50,000 --> 00:57:55,000
+Animal Paradise - Communication & Healing: A good interview is more like a conversation. You both are great.
+
+100
+00:58:01,000 --> 00:58:06,000
+Mommy Guide Inc: Aww @Ana Zugheri thanks! and that is super awesome to know. We will all be there for sure Ana:)
+
+101
+00:58:01,000 --> 00:58:06,000
+Siri Knows: The glitches can be annoying but the conversation covers it up🤗
+
+102
+00:58:10,000 --> 00:58:15,000
+Tech Troublemaker: You are the secret ingredient for every Live Stream you do.
+
+103
+00:58:32,000 --> 00:58:37,000
+Mommy Guide Inc: @Sandi Thompson absolutely agree! I didn't even notice the glitches anymore:)
+
+104
+00:58:53,000 --> 00:58:58,000
+Julie Ulrich: You are 2 sweet peaches 😍
+
+105
+00:58:54,000 --> 00:58:59,000
+Siri Knows: Notice
+
+106
+00:58:58,000 --> 00:59:03,000
+Siri Knows: Noice
+
+107
+00:59:04,000 --> 00:59:09,000
+S❣d: I arrived late to the party 😔
+
+108
+00:59:20,000 --> 00:59:25,000
+Caleb McDonald: Welcome Zoë! 👋🏻
+
+109
+00:59:22,000 --> 00:59:27,000
+Mommy Guide Inc: Wow Roy@Tech Troublemaker well said. Absolutely true:)
+
+110
+00:59:37,000 --> 00:59:42,000
+Sandi Thompson: THANK YOU both!
+
+111
+00:59:48,000 --> 00:59:53,000
+S❣d: hey Caleb
+
+112
+00:59:53,000 --> 00:59:58,000
+S❣d: I will !! xx
+
+113
+00:59:59,000 --> 01:00:04,000
+Tech Troublemaker: This was great.
+
+114
+00:59:59,000 --> 01:00:04,000
+Julie Ulrich: 👏👏👏
+
+115
+01:00:04,000 --> 01:00:09,000
+Make and Do Crafts: Thanks for great conversation!
+
+116
+01:00:10,000 --> 01:00:15,000
+Mommy Guide Inc: Thank you everyone for joining Markus and Sarah today:).
+
+117
+01:00:11,000 --> 01:00:16,000
+Animal Paradise - Communication & Healing: You are great together. Great team. Thanks
+
+118
+01:00:23,000 --> 01:00:28,000
+Mommy Guide Inc: See you all next week!!!
+
+119
+01:00:29,000 --> 01:00:34,000
+Ana Zugheri: I jumped in late but will for sure check out the replay
+
