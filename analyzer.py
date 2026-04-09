@@ -1,7 +1,7 @@
 from collections import Counter
 import csv
 import os
-from parser import ChatEntry, parse_file
+from srt_parser import ChatEntry, parse_file
 import re
 import sys
 from tabulate import tabulate
