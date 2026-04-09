@@ -63,7 +63,7 @@ if uploaded_files:
         with col3:
             # Top streams
             st.subheader("Top Streams")
-            streams_ranked = get_rank(chats, "Stream", 10)
+            streams_ranked = get_rank(chats, "StreamName", 10)
             streams_formatted = format_rank(
                 streams_ranked, column2="Stream", column3="Chats"
             )
@@ -71,7 +71,7 @@ if uploaded_files:
 
         # Chats
         st.subheader("Chats")
-        chats_df = pd.DataFrame(chats, columns=["Stream", "Chatter", "Message"])
+        chats_df = pd.DataFrame(chats, columns=["StreamName", "StreamTime", "Number", "Time", "Chatter", "Message"])
         st.dataframe(chats_df, hide_index=True)
 
         # Word cloud

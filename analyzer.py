@@ -46,7 +46,7 @@ def main() -> None:
     print("Top streams")
     print()
 
-    streams_ranked = get_rank(chats, "Stream", 10)
+    streams_ranked = get_rank(chats, "StreamName", 10)
     streams_formated = format_rank(streams_ranked, column2="Stream", column3="Chats")
     print(tabulate(streams_formated, headers="keys"))
 
@@ -173,7 +173,7 @@ def get_word_rank(
 
 def get_rank(
     chats: list[ChatEntry],
-    field: Literal["Chatter", "Stream"],
+    field: Literal["Chatter", "StreamName"],
     top_n: int | None = None,
 ) -> list[tuple[str, int]]:
     return Counter(chat[field] for chat in chats).most_common(top_n)

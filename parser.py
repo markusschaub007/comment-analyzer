@@ -1,9 +1,11 @@
 import re
+from datetime import datetime
 from typing import TypedDict
 
 
 class ChatEntry(TypedDict):
-    Stream: str
+    StreamName: str
+    StreamTime: datetime
     Number: str
     Time: str
     Chatter: str
@@ -11,8 +13,8 @@ class ChatEntry(TypedDict):
 
 
 def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
-    file_chats: list[ChatEntry] = []
-    stream = file_name.removesuffix(".srt")
+    chats: list[ChatEntry] = []
+    stream_name, stream_time = parse_filename(file_name)
 
     length = len(lines)
     if length % 4 != 0:
@@ -23,9 +25,10 @@ def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
         time = parse_time(lines[i + 1].rstrip())
         chatter, message = parse_message(lines[i + 2].rstrip())
         if number and time and chatter:
-            file_chats.append(
+            chats.append(
                 {
-                    "Stream": stream,
+                    "StreamName": stream_name,
+                    "StreamTime": stream_time,
                     "Number": number,
                     "Time": time,
                     "Chatter": chatter,
@@ -45,8 +48,20 @@ def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
             )
             raise ValueError(error_message)
 
-    return file_chats
+    return chats
 
+
+def parse_filename(file_name: str) -> tuple[str, datetime]:
+    pattern = r"^(.*?) on (\d{4}-\d{2}-\d{2}) at (\d{2}\.\d{2})\.srt$"
+    if match := re.search(pattern, file_name):
+        stream_name = match.group(1)
+        date_time = match.group(2) + " " + match.group(3)
+        streamtime = datetime.strptime(date_time, "%Y-%m-%d %H.%M")
+        return stream_name, streamtime
+    else:
+        raise ValueError(f"Can't parse file name {file_name}")
+
+# print(parse_filename("Live Stream on 2024-01-01 at 12.00.srt")[1].date())
 
 def parse_number(line: str) -> str:
     pattern = r"^\d+$"
