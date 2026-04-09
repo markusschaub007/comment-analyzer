@@ -52,11 +52,14 @@ def parse_file(file_name: str, lines: list[str]) -> list[ChatEntry]:
 
 
 def parse_filename(file_name: str) -> tuple[str, datetime]:
-    pattern = r"^(.*?) on (\d{4}-\d{2}-\d{2}) at (\d{2}\.\d{2})\.srt$"
+    pattern = r"^(.*?) on (\d{4}-\d{2}-\d{2}) at (\d{2}\.\d{2})(\.\d{2})?\.srt$"
     if match := re.search(pattern, file_name):
         stream_name = match.group(1)
-        date_time = match.group(2) + " " + match.group(3)
-        streamtime = datetime.strptime(date_time, "%Y-%m-%d %H.%M")
+        date = match.group(2)
+        hours_minutes = match.group(3)
+        seconds = match.group(4) or ".00"
+        date_time = date + " " + hours_minutes + seconds
+        streamtime = datetime.strptime(date_time, "%Y-%m-%d %H.%M.%S")
         return stream_name, streamtime
     else:
         raise ValueError(f"Can't parse file name {file_name}")

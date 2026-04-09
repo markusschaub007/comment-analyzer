@@ -1,5 +1,9 @@
 # Commment Analyser for Ecamm Live
 
+source .venv/bin/activate
+
+python -m pip install xy
+
 ### Vidoe Demo: [link will follow](https://youtube.com)
 
 ### Description
