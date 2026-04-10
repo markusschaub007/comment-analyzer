@@ -4,7 +4,9 @@ import io
 import wordcloud
 import pandas as pd
 
-st.set_page_config(page_title="Comment Analyzer", layout="wide")
+st.set_page_config(
+    page_title="Comment Analyzer", layout="wide", initial_sidebar_state="expanded"
+)
 
 with st.sidebar:
     st.header("File Upload")
@@ -20,7 +22,6 @@ st.title("Comment Analyzer")
 
 
 if uploaded_files:
-    st.write(f"Uploaded {len(uploaded_files)} file(s)")
 
     # Prepare files for parsing
     files_to_parse = []
@@ -40,7 +41,41 @@ if uploaded_files:
 
     # Display results if we have data
     if chats:
-        st.success(f"Successfully parsed {len(chats)} chat messages")
+        chats_df = pd.DataFrame(
+            chats,
+            columns=[
+                "StreamName",
+                "StreamTime",
+                "Number",
+                "Time",
+                "Chatter",
+                "Message",
+            ],
+        )
+        total_streams = chats_df["StreamName"].nunique()
+        total_chatters = chats_df["Chatter"].nunique()
+        total_chats = len(chats_df)
+        streams_df = (
+            chats_df.groupby(["StreamName", "StreamTime"])
+            .agg(Chats=("Message", "size"), Chatters=("Chatter", "nunique"))
+            .reset_index()
+        )
+        chatters_df = (
+            chats_df.groupby("Chatter")
+            .agg(Chats=("Message", "size"), Streams=("StreamName", "nunique"))
+            .reset_index()
+            .sort_values(["Chats", "Chatter"], ascending=[False, True])
+        )
+
+        st.subheader("Overview")
+        c1, c2, c3 = st.columns(3)
+
+        with c1:
+            st.metric("Total Streams", f"{total_streams:,}")
+        with c2:
+            st.metric("Total Chatters", f"{total_chatters:,}")
+        with c3:
+            st.metric("Total Chats", f"{total_chats:,}")
 
         col1, col2, col3 = st.columns(3)
 
@@ -69,9 +104,32 @@ if uploaded_files:
             )
             st.dataframe(streams_formatted, width="content")
 
+        # Chatters
+        st.subheader("Chatters")
+        st.dataframe(
+            chatters_df.style.format(
+                {
+                    "Chats": "{:,}",
+                    "Streams": "{:,}",
+                }
+            ),
+            hide_index=True,
+        )
+
+        # Streams
+        st.subheader("Streams")
+        st.dataframe(
+            streams_df.style.format(
+                {
+                    "Chats": "{:,}",
+                    "Chatters": "{:,}",
+                }
+            ),
+            hide_index=True,
+        )
+
         # Chats
         st.subheader("Chats")
-        chats_df = pd.DataFrame(chats, columns=["StreamName", "StreamTime", "Number", "Time", "Chatter", "Message"])
         st.dataframe(chats_df, hide_index=True)
 
         # Word cloud
@@ -89,3 +147,8 @@ if uploaded_files:
 
     elif not errors:
         st.info("No chat messages found in the uploaded files")
+
+else:
+    st.info(
+        "Please upload one or more .srt files in the sidebar to analyze the chat messages"
+    )
