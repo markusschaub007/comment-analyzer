@@ -5,7 +5,7 @@ import wordcloud
 import pandas as pd
 
 st.set_page_config(
-    page_title="Comment Analyzer", layout="wide", initial_sidebar_state="expanded"
+    page_title="Comment Analyzer Beta", layout="wide", initial_sidebar_state="expanded"
 )
 
 with st.sidebar:
@@ -18,7 +18,7 @@ with st.sidebar:
         key="file_uploader",
     )
 
-st.title("Comment Analyzer")
+st.title("Comment Analyzer Beta")
 
 
 if uploaded_files:
@@ -55,6 +55,9 @@ if uploaded_files:
         total_streams = chats_df["StreamName"].nunique()
         total_chatters = chats_df["Chatter"].nunique()
         total_chats = len(chats_df)
+
+        all_chatters = sorted(chats_df["Chatter"].dropna().unique().tolist())
+    
         streams_df = (
             chats_df.groupby(["StreamName", "StreamTime"])
             .agg(Chats=("Message", "size"), Chatters=("Chatter", "nunique"))
@@ -130,7 +133,21 @@ if uploaded_files:
 
         # Chats
         st.subheader("Chats")
-        st.dataframe(chats_df, hide_index=True)
+
+        choices = ["All"] + all_chatters
+
+        selected_chatter = st.selectbox(
+            "Filter by chatter",
+            options=choices,
+            index=0,
+        )
+
+        if selected_chatter == "All":
+            filterd_chats_df = chats_df
+        else:
+            filterd_chats_df = chats_df[chats_df["Chatter"] == selected_chatter]
+
+        st.dataframe(filterd_chats_df, hide_index=True)
 
         # Word cloud
         st.subheader("Word Cloud")
